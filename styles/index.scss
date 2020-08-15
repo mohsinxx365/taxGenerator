@@ -1,0 +1,35 @@
+$paper-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+:root {
+  --width: 1295px;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media (max-width: 1350px) {
+    --width: 80vw;
+  }
+}
+
+.tableContainer {
+  width: var(--width);
+  overflow: auto;
+  box-shadow: $paper-shadow;
+}
+
+.toolbar {
+  width: var(--width);
+  box-shadow: $paper-shadow;
+  margin-bottom: 10px;
+}

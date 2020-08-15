@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        html {
+            -webkit-print-color-adjust: exact;
+        }
+
+        body {
+            padding-top: 50px;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 24px;
+            letter-spacing: .4px;
+            font-size: 14px;
+            padding: 50px;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .logo img {
+            width: 200px;
+            height: 110px;
+            /*---------*/
+            opacity: 0.6;
+            padding-bottom: 30px;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            text-decoration: underline;
+            letter-spacing: 0.5px;
+            font-family: Arial, Helvetica, sans-serif;
+            /*--------*/
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            /*--------*/
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .greetings {
+            margin-bottom: 20px;
+        }
+
+        .body {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: #6d283b;
+            color: white;
+            padding: 3px 9px;
+            border-right: .25px solid #ddd;
+        }
+
+        table td {
+            padding: 3px 9px;
+            text-align: center;
+            border: .25px solid #ddd;
+        }
+
+        .law {
+            margin-top: 20px;
+        }
+
+        .identity {
+            margin-top: 75px;
+        }
+
+        .identity .stamp {
+            margin: 20px 0px;
+            color: rgb(177, 177, 177);
+            font-weight: bold;
+            letter-spacing: 1.3px;
+        }
+
+        footer {
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="logo">
+        <img src="https://i.ibb.co/YDkjncw/qdvc.jpg" />
+    </div>
+
+    <div class="title">Withholding Tax Certificate</div>
+    <div class="content">
+        <div class="info">
+            <div>
+                Name of Tax Payer: QDVC Q.S.C<br />
+                TIN: 000006365895854<br />
+                Address : The Gate Mall Tower 4, 16th Floor Al Dafna Area
+            </div>
+            <div>
+                P.O.Box : 19389 - Doha , Qatar<br />
+                Activity : Construction Works
+            </div>
+        </div>
+        <div class="greetings">Greetings;</div>
+
+        {{!-- Things Need To be made dynamic --}}
+        <p class="body">
+            I, the undersigned, acknowlege that I withheld an amount of {{currency}}.{{taxWithHeld}} -
+            ({{displayCurrency}} {{taxInWords}} only),
+            and remitted it to the bank account of the Public Revenues and Taxes Department,
+            Ministry of the Economy and Finance, State of Qatar, being a withholding tax
+            on payment made to {{name}} on {{paymentDate}} for the services
+            rendered to us
+            {{#if contractRef}}
+            under contract ref. {{contractRef}}
+            {{/if}} , in accordance
+            with the following :
+        </p>
+
+        <table>
+            <tr>
+                <th>Service Type</th>
+                <th>Gross Payment Amount</th>
+                <th>Withholding Tax Rate</th>
+                <th>Amount Tax WithHeld</th>
+            </tr>
+            <tr>
+                <td>{{serviceType}}</td>
+                <td>{{currency}} {{grossAmt}}</td>
+                <td>{{taxRate}}</td>
+                {{!-- Needs To Be Changed --}}
+                <td>{{currency}} {{taxWithHeld}}</td>
+            </tr>
+        </table>
+        <p class="law">
+            This Certificate is delivered to {{name}} pursuant to
+            Article(20) of the income Tax Law issued by law (21) of 2009
+            and in accordance with the Article(24) of the executive Regulations
+            of this Law.
+        </p>
+
+        <div class="identity">
+            <div class="name">Name: Amr Wahid</div>
+            <div class="jobTitle">Title: Chief Financial Officer</div>
+            <div class="stamp">Stamp</div>
+            <div class="pin">PIN NO: TAS263658951459</div>
+        </div>
+        <footer>
+            <img src="https://i.ibb.co/WGX396K/footer.png" />
+        </footer>
+
+    </div>
+</body>
+
+</html>
