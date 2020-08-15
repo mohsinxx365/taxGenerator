@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.10.0",
     "chrome-aws-lambda": "^5.2.1",
     "decimal-to-percent": "^1.0.1",
     "file-saver": "^2.0.2",
@@ -22,9 +25,11 @@
     "puppeteer": "^5.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "sass": "^1.26.10",
     "uuid": "^8.3.0",
     "xlsx": "^0.16.6"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/mohsinxx365/taxGenerator"
+  }
 }

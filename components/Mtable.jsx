@@ -1,9 +1,40 @@
 import { useState } from "react";
-import { tableData } from "../table.data";
-import { colData } from "../col.data";
+import { tableData } from "../data/table.data";
+import { colData } from "../data/col.data";
 import MtableRow from "./MtableRow";
 import { v4 as uuid } from "uuid";
 import Mtoolbar from "./Mtoolbar";
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableContainer,
+  Paper,
+  makeStyles,
+} from "@material-ui/core";
+
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    height: "100vh",
+    width: "100vw",
+    padding: 50,
+  },
+  tableContainer: {
+    maxWidth: "1550px",
+  },
+  table: {
+    width: "1550px",
+  },
+  tableHead: {
+    fontWeight: "bold",
+  },
+});
 
 const dataWithId = tableData.map((item, index) => {
   return {
@@ -14,21 +45,28 @@ const dataWithId = tableData.map((item, index) => {
 
 const Mtable = () => {
   const [data, setData] = useState(dataWithId);
+  const classes = useStyles();
 
   return (
-    <div className="Container">
+    <div className={classes.container}>
       <Mtoolbar setData={setData} data={data} />
-      <div className="tableContainer">
-        <table>
-          <thead>
-            <tr>
-              <th key={uuid()}>id</th>
+      <TableContainer component={Paper} className={classes.tableContainer}>
+        <Table className={classes.table}>
+          <TableHead className={classes.tableHead}>
+            <TableRow>
+              <TableCell key={uuid()} align="left">
+                id
+              </TableCell>
               {colData.map((item) => {
-                return <th key={uuid()}>{item}</th>;
+                return (
+                  <TableCell key={uuid()} align="left">
+                    {item}
+                  </TableCell>
+                );
               })}
-            </tr>
-          </thead>
-          <tbody>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {data.map((item) => {
               return (
                 <MtableRow
@@ -39,9 +77,9 @@ const Mtable = () => {
                 />
               );
             })}
-          </tbody>
-        </table>
-      </div>
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

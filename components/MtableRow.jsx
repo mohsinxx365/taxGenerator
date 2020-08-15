@@ -1,5 +1,6 @@
-import { colData } from "../col.data";
+import { colData } from "../data/col.data";
 import MtableCell from "./MtableCell";
+import { TableRow } from "@material-ui/core";
 
 const MtableRow = ({ rowData, setData, data }) => {
   const onCellUpdate = (newVal, colName) => {
@@ -11,7 +12,7 @@ const MtableRow = ({ rowData, setData, data }) => {
   };
 
   return (
-    <tr>
+    <TableRow>
       <MtableCell isId>{rowData["id"]}</MtableCell>
       {colData.map((item) => {
         return (
@@ -24,7 +25,7 @@ const MtableRow = ({ rowData, setData, data }) => {
           </MtableCell>
         );
       })}
-    </tr>
+    </TableRow>
   );
 };
 export default MtableRow;
