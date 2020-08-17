@@ -1,0 +1,83 @@
+$paper-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+  0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --width: 1465px;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @media (max-width: 1485px) {
+    --width: 80vw;
+  }
+}
+
+.tableContainer {
+  width: var(--width);
+  overflow: auto;
+  box-shadow: $paper-shadow;
+}
+
+.toolbar {
+  width: var(--width);
+  box-shadow: $paper-shadow;
+  margin-bottom: 10px;
+  display: flex;
+  height: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 1465px;
+  font-size: 0.9em;
+  min-width: 400px;
+
+  thead tr {
+    background: #6d283b;
+    color: #fff;
+    text-align: left;
+  }
+
+  th,
+  td {
+    padding: 12px 8px;
+  }
+
+  td input {
+    padding: 6px 8px;
+    border: none;
+    outline: none;
+  }
+  td input:focus {
+    border: 1px solid #0132c9;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    td input {
+      background-color: #f3f3f3;
+    }
+  }
+}
+.iconBtn {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

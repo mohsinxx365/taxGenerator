@@ -14,6 +14,7 @@ import {
   Paper,
   makeStyles,
 } from "@material-ui/core";
+import MAlert from "./MAlert";
 
 const useStyles = makeStyles({
   container: {
@@ -23,10 +24,12 @@ const useStyles = makeStyles({
     flexDirection: "column",
     height: "100vh",
     width: "100vw",
-    padding: 50,
+    padding: 30,
   },
+
   tableContainer: {
     maxWidth: "1550px",
+    maxHeight: "400px",
   },
   table: {
     width: "1550px",
@@ -46,12 +49,20 @@ const dataWithId = tableData.map((item, index) => {
 const Mtable = () => {
   const [data, setData] = useState(dataWithId);
   const classes = useStyles();
+  const [alert, setAlert] = useState({
+    visible: false,
+  });
 
   return (
     <div className={classes.container}>
-      <Mtoolbar setData={setData} data={data} />
+      {alert.visible ? (
+        <MAlert severity={alert.severity}>{alert.value}</MAlert>
+      ) : (
+        ""
+      )}
+      <Mtoolbar setData={setData} data={data} setAlert={setAlert} />
       <TableContainer component={Paper} className={classes.tableContainer}>
-        <Table className={classes.table}>
+        <Table className={classes.table} size="small">
           <TableHead className={classes.tableHead}>
             <TableRow>
               <TableCell key={uuid()} align="left">
@@ -66,18 +77,20 @@ const Mtable = () => {
               })}
             </TableRow>
           </TableHead>
-          <TableBody>
-            {data.map((item) => {
-              return (
-                <MtableRow
-                  rowData={item}
-                  key={item.id}
-                  setData={setData}
-                  data={data}
-                />
-              );
-            })}
-          </TableBody>
+          {
+            <TableBody>
+              {data.map((item) => {
+                return (
+                  <MtableRow
+                    rowData={item}
+                    key={item.id}
+                    setData={setData}
+                    data={data}
+                  />
+                );
+              })}
+            </TableBody>
+          }
         </Table>
       </TableContainer>
     </div>
