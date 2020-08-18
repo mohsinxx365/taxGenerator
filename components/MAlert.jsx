@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { Alert, AlertTitle } from "@material-ui/lab";
-import { makeStyles, Paper } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   alert: {
@@ -10,9 +9,8 @@ const useStyles = makeStyles({
   },
 });
 
-const MAlert = ({ severity, children }) => {
+const Malert = ({ severity, children }) => {
   const classes = useStyles();
-  const [state, setState] = useState({ severity: "error", value: "Hello" });
 
   return (
     <Alert className={classes.alert} severity={severity}>
@@ -20,4 +18,4 @@ const MAlert = ({ severity, children }) => {
     </Alert>
   );
 };
-export default MAlert;
+export default Malert;

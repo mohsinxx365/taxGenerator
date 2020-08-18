@@ -14,7 +14,8 @@ import {
   Paper,
   makeStyles,
 } from "@material-ui/core";
-import MAlert from "./MAlert";
+import Malert from "./Malert";
+import Mdialog from "./Mdialog";
 
 const useStyles = makeStyles({
   container: {
@@ -56,7 +57,7 @@ const Mtable = () => {
   return (
     <div className={classes.container}>
       {alert.visible ? (
-        <MAlert severity={alert.severity}>{alert.value}</MAlert>
+        <Malert severity={alert.severity}>{alert.value}</Malert>
       ) : (
         ""
       )}

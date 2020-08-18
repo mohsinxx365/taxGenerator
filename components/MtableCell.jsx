@@ -9,7 +9,8 @@ const useStyles = makeStyles({
     textOverflow: "ellipsis",
 
     "&:focus": {
-      border: "1px solid #2162D6",
+      border: "2px solid #2162D6",
+      borderRadius: "5px",
     },
   },
   tableCell: {

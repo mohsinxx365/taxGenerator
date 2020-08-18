@@ -4,7 +4,6 @@ export const theme = createMuiTheme({
   typography: {
     allVariants: {
       fontFamily: ["Open Sans"].join(","),
-      letterSpacing: ".25px",
     },
   },
 
