@@ -16,8 +16,15 @@ import convert from "number-to-words";
 import { saveAs } from "file-saver";
 import CloseIcon from "@material-ui/icons/Close";
 
+const useStyles = makeStyles({
+  dialog: {
+    borderRadius: "0px",
+  },
+});
+
 const Mdialog = ({ open, setOpen, data }) => {
   const [loading, setLoading] = useState(false);
+  const classes = useStyles();
 
   const generatePdf = () => {
     if (data.length) {
@@ -126,30 +133,34 @@ const Mdialog = ({ open, setOpen, data }) => {
   };
 
   return (
-    <div>
-      <Dialog fullWidth maxWidth="sm" open={open} onClose={handleClose}>
-        <DialogTitle>Download Files</DialogTitle>
-        {loading ? <LinearProgress /> : ""}
-        <DialogContent>
-          <DialogContentText>
-            Are You Sure You Want to Continue ?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button variant={"contained"} onClick={generatePdf} color="primary">
-            Generate
-          </Button>
-          <Button
-            variant={"contained"}
-            onClick={handleClose}
-            color="secondary"
-            startIcon={<CloseIcon />}
-          >
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <Dialog
+      fullWidth
+      maxWidth="sm"
+      open={open}
+      onClose={handleClose}
+      classes={{ paper: classes.dialog }}
+    >
+      {loading ? <LinearProgress /> : ""}
+      <DialogTitle>Download Files</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          Are You Sure You Want to Continue ?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button variant={"contained"} onClick={generatePdf} color="primary">
+          Generate
+        </Button>
+        <Button
+          variant={"contained"}
+          onClick={handleClose}
+          color="secondary"
+          startIcon={<CloseIcon />}
+        >
+          Cancel
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 export default Mdialog;
