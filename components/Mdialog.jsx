@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -8,6 +8,7 @@ import {
   Button,
   DialogContent,
   LinearProgress,
+  Slide,
 } from "@material-ui/core";
 import JSZip from "jszip";
 import toPercent from "decimal-to-percent";
@@ -20,6 +21,10 @@ const useStyles = makeStyles({
   dialog: {
     borderRadius: "0px",
   },
+});
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const Mdialog = ({ open, setOpen, data }) => {
@@ -138,6 +143,8 @@ const Mdialog = ({ open, setOpen, data }) => {
       maxWidth="sm"
       open={open}
       onClose={handleClose}
+      TransitionComponent={Transition}
+      keepMounted
       classes={{ paper: classes.dialog }}
     >
       {loading ? <LinearProgress /> : ""}
