@@ -156,7 +156,7 @@ const Mdialog = ({ open, setOpen, data }) => {
       </DialogContent>
       <DialogActions>
         <Button variant={"contained"} onClick={generatePdf} color="primary">
-          Generate
+          Pdfs
         </Button>
         <Button
           variant={"contained"}
